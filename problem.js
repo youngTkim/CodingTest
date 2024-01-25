@@ -1,24 +1,3 @@
-let routes = [
-  [-20, -15],
-  [-14, -5],
-  [-18, -13],
-  [-5, -3],
-]; // 2
-function solution(routes) {
-  let arr = routes.map((route) => {
-    const [depart, arrive] = route;
-    return [Math.abs(arrive), Math.abs(depart)];
-  });
-  arr.sort((a, b) => {
-    if (a[0] === b[0]) {
-      return a[1] - b[1];
-    }
-    return a[0] - b[0];
-  });
-}
-let answer = solution(routes);
-console.log(answer);
-
 // https://school.programmers.co.kr/learn/courses/30/lessons/64064
 // let user_id = ["frodo", "fradi", "crodo", "abc123", "frodoc"],
 //   banned_id = ["*rodo", "*rodo", "******"];
