@@ -1,3 +1,5 @@
+//https://school.programmers.co.kr/learn/courses/30/lessons/172928
+
 function solution(park, routes) {
   let row = park.findIndex((r) => r.includes("S")),
     col = park[row].indexOf("S");
