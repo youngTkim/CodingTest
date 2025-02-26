@@ -1,3 +1,5 @@
+/// https://school.programmers.co.kr/learn/courses/30/lessons/131705
+
 function solution(number) {
   let answer = 0;
   for (let i = 0; i < number.length; i++) {
