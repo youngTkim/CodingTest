@@ -20,6 +20,30 @@ function solution(numbers) {
   return DFS([], [], 0).sort((a, b) => a - b);
 }
 
+function solution2(numbers) {
+  const temp = [];
+
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = i + 1; j < numbers.length; j++) {
+      temp.push(numbers[i] + numbers[j]);
+    }
+  }
+
+  const answer = [...new Set(temp)];
+
+  return answer.sort((a, b) => a - b);
+}
+
+function solution(numbers) {
+  const n = new Set();
+  for (let i = 0; i < numbers.length; i++) {
+    for (let j = i + 1; j < numbers.length; j++) {
+      n.add(numbers[i] + numbers[j]);
+    }
+  }
+  return [...n].sort((a, b) => a - b);
+}
+
 let answer1 = solution(numbers1);
 let answer2 = solution(numbers2);
 

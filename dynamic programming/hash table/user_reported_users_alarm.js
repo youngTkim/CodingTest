@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/92334
+
 let id_list1 = ["muzi", "frodo", "apeach", "neo"];
 let report1 = [
   "muzi frodo",
