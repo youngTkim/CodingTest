@@ -11,79 +11,69 @@ let n1 = 10,
   ans1 = [2, 3, 4, 3, 3]; //result 3
 
 function solution(n, q, ans) {
-  // 각 숫자가 비밀 코드에 포함될 수 있는지 여부를 추적
-  const possibleNumbers = new Array(n + 1).fill(true);
-
-  // 각 시도에서 사용된 숫자들을 Set으로 변환하여 빠른 검색 가능하게 함
+  // 1. 초기 설정: 빠른 검색을 위한 Set 변환
   const qSets = q.map((attempt) => new Set(attempt));
 
-  // 가능한 조합 수를 세는 함수
-  function countValidCombinations(index, current, remainingToSelect) {
-    // 기저 조건: 5개 숫자를 모두 선택했을 때
-    if (remainingToSelect === 0) {
-      // 모든 시도에 대해 검증
-      for (let i = 0; i < q.length; i++) {
-        let matches = 0;
-        for (const num of current) {
-          if (qSets[i].has(num)) {
-            matches++;
-          }
-        }
+  // 2. 가능한 모든 조합 탐색 시작
+  return findValidCombinations(n, q, ans, qSets);
+}
 
-        if (matches !== ans[i]) {
-          return 0; // 유효하지 않은 조합
-        }
-      }
-      return 1; // 유효한 조합
+// 가능한 비밀 코드 조합의 수를 찾는 함수
+function findValidCombinations(n, q, ans, qSets) {
+  // 숫자 선택 여부를 추적하는 배열
+  const possibleNumbers = new Array(n + 1).fill(true);
+
+  // 백트래킹으로 조합 탐색
+
+  // 백트래킹 함수: 현재 위치, 현재까지 선택한 숫자들, 더 선택해야 할 숫자 개수
+  function backtrack(position, selected, remaining) {
+    // 종료 조건: 5개 숫자를 모두 선택한 경우
+    if (remaining === 0) {
+      return isValidCode(selected) ? 1 : 0;
     }
 
-    // 남은 숫자를 모두 선택해도 5개가 안 되는 경우
-    if (index > n || index + remainingToSelect - 1 > n) {
+    // 불가능한 경우: 남은 숫자를 모두 선택해도 5개가 안 되는 경우
+    if (position > n || position + remaining - 1 > n) {
       return 0;
     }
 
-    let count = 0;
+    let validCombinations = 0;
 
     // 현재 숫자를 선택하는 경우
-    if (possibleNumbers[index]) {
-      current.push(index);
-      count += countValidCombinations(
-        index + 1,
-        current,
-        remainingToSelect - 1
-      );
-      current.pop();
+    if (possibleNumbers[position]) {
+      selected.push(position);
+      validCombinations += backtrack(position + 1, selected, remaining - 1);
+      selected.pop(); // 백트래킹
     }
 
     // 현재 숫자를 선택하지 않는 경우
-    count += countValidCombinations(index + 1, current, remainingToSelect);
+    validCombinations += backtrack(position + 1, selected, remaining);
 
-    return count;
+    return validCombinations;
   }
 
-  // 첫 번째 시도와 응답을 기반으로 가능한 숫자 필터링 (최적화)
-  if (q.length > 0) {
-    const firstAttempt = new Set(q[0]);
-    const firstResponse = ans[0];
-
-    // 첫 번째 시도에 포함된 숫자 중 최소한 firstResponse개는 비밀 코드에 포함되어야 함
-    // 첫 번째 시도에 포함되지 않은 숫자 중 최소한 (5 - firstResponse)개는 비밀 코드에 포함되어야 함
-
-    // 극단적인 경우 필터링 (모든 숫자가 포함되거나 제외되는 경우)
-    if (firstResponse === 0) {
-      // 첫 번째 시도의 모든 숫자는 비밀 코드에 포함될 수 없음
-      for (const num of firstAttempt) {
-        possibleNumbers[num] = false;
-      }
-    } else if (firstResponse === 5) {
-      // 첫 번째 시도의 모든 숫자는 비밀 코드에 포함되어야 함
-      for (let i = 1; i <= n; i++) {
-        if (!firstAttempt.has(i)) {
-          possibleNumbers[i] = false;
+  // 선택한 조합이 모든 시도 결과와 일치하는지 검증
+  function isValidCode(code) {
+    for (let i = 0; i < q.length; i++) {
+      // 현재 시도와 코드 사이의 일치하는 숫자 개수 계산
+      let matchCount = 0;
+      for (const num of code) {
+        if (qSets[i].has(num)) {
+          matchCount++;
         }
       }
+
+      // 일치 개수가 예상과 다르면 유효하지 않음
+      if (matchCount !== ans[i]) {
+        return false;
+      }
     }
+
+    // 모든 시도와 일치하면 유효한 코드
+    return true;
   }
 
-  return countValidCombinations(1, [], 5);
+  return backtrack(1, [], 5);
 }
+
+console.log(solution(n1, q1, ans1));
