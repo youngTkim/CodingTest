@@ -1,3 +1,5 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/42885
+
 function solution(people, limit) {
   let l = 0;
   let r = people.length - 1;
