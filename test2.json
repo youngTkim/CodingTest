@@ -1,0 +1,102 @@
+{
+  "page": 1,
+  "is_unused": -1,
+  "answer_data": [
+    {
+      "matching_key": "업체명",
+      "answer": "오늘의작업장",
+      "answer_type": "string",
+      "block_type_name": "text"
+    },
+    {
+      "matching_key": "문서 생성일",
+      "answer": "2025-03-21 11:46",
+      "answer_type": "string",
+      "block_type_name": "date"
+    },
+    {
+      "matching_key": "출입차량",
+      "answer": { "drop_down_answer": "", "write_answer": "" },
+      "answer_type": "map",
+      "block_type_name": "car_number"
+    },
+    {
+      "matching_key": "현장관리자",
+      "answer": {
+        "is_sign": false,
+        "signed_at": "",
+        "sign_user_info": {
+          "user_id": 110,
+          "name": "오늘의작업장",
+          "sub_contract": "",
+          "department": "인사",
+          "position": "상무",
+          "phone_number": "admin",
+          "profile_img": "",
+          "sign_img": "signature/acf2d368122745a3999bb083913e5557.png",
+          "birth_date": "2022.12.01"
+        }
+      },
+      "answer_type": "map",
+      "block_type_name": "sign"
+    },
+    {
+      "matching_key": "작업자",
+      "answer": ["", "", "", "", "", ""],
+      "answer_type": "array",
+      "block_type_name": "multi"
+    },
+    {
+      "matching_key": "작업기간",
+      "answer": "2025-03-21 00:00 ~ 2025-03-21 00:00",
+      "answer_type": "string",
+      "block_type_name": "date"
+    },
+    {
+      "matching_key": "작업시간",
+      "answer": "2000-10-10 09:00 ~ 2000-10-10 17:00",
+      "answer_type": "string",
+      "block_type_name": "date"
+    },
+    {
+      "matching_key": "작업개요",
+      "answer": "edd",
+      "answer_type": "string",
+      "block_type_name": "text"
+    },
+    {
+      "matching_key": "작업현장 비상연락망 구축 여부",
+      "answer": [false, false, false],
+      "answer_type": "array",
+      "block_type_name": "multi"
+    },
+    {
+      "matching_key": "기타 특이사항",
+      "answer": "",
+      "answer_type": "string",
+      "block_type_name": "text"
+    },
+    {
+      "matching_key": "발주담당자",
+      "answer": {
+        "is_sign": false,
+        "approval_status": "",
+        "sign_user_info": {
+          "user_id": 0,
+          "name": "",
+          "sub_contract": "",
+          "department": "",
+          "position": "",
+          "phone_number": "",
+          "profile_img": "",
+          "sign_img": "",
+          "birth_date": ""
+        },
+        "signed_at": "",
+        "delivery_message": ""
+      },
+      "answer_type": "map",
+      "block_type_name": "sign"
+    }
+  ]
+}
