@@ -1,3 +1,4 @@
+// https://school.programmers.co.kr/learn/courses/30/lessons/12973
 function solution(s) {
   const stack = [];
 
