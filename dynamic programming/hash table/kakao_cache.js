@@ -16,6 +16,7 @@ let cities1 = [
 
 function solution(cacheSize, cities) {
   let executionTime = 0;
+  // 대소문자 구분 없애기
   cities = cities.map((city) => city.toLowerCase());
 
   // 캐시 크기가 0인 경우 모든 접근이 miss
@@ -44,6 +45,7 @@ function solution(cacheSize, cities) {
       // 캐시가 가득 찬 경우 가장 오래된 항목(맨 앞) 제거
       if (cache.size >= cacheSize) {
         const oldestCity = cache.keys().next().value;
+        console.log("oldestCity: ", oldestCity);
         cache.delete(oldestCity);
       }
 
