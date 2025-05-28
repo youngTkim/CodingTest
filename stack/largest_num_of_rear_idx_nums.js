@@ -13,7 +13,7 @@ function solution(numbers) {
   }
 
   for (let i = 0; i < record.length; i++) {
-    const [currentIndex, currentValue] = record[i];
+    const [, currentValue] = record[i];
 
     // 현재 숫자가 스택의 top에 있는 record의 값보다 크면
     // 스택의 top에 있는 인덱스들의 뒷 큰수는 현재 숫자
@@ -34,7 +34,6 @@ function solution(numbers) {
   }
 
   // 스택에 남아있는 인덱스들은 뒷 큰수가 없으므로 -1로 유지
-
   return answer;
 }
 
