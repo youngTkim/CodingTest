@@ -1,0 +1,42 @@
+{
+  "id": 1,
+  "block_type_name": "approval",
+  "question": "밀폐공간 확인자",
+  "answer_matching_key": "sign_matching_key",
+  "is_required": 0,
+  "answer_type": "map",
+  "placeholder": "",
+  "answer": {
+    "approval_status": "",
+    "sign_user_info": {
+      "user_id": 1,
+      "name": "",
+      "sub_contract": "",
+      "department": "",
+      "position": "",
+      "phone_number": "",
+      "profile_img": "",
+      "sign_img": "",
+      "birth_date": ""
+    },
+    "signed_at": "2024.11.11 11:11",
+
+    "delivery_message": "현인님 승인 부탁드려요"
+  },
+  "option": {
+    "is_now_turn": true,
+    "approval_order": 3,
+    "candidates": [
+      {
+        "user_id": 1,
+        "title": "안전관리자1",
+        "name": "김현인"
+      },
+      {
+        "user_id": 160,
+        "title": "안전관리자2",
+        "name": "김나혜"
+      }
+    ]
+  }
+}
